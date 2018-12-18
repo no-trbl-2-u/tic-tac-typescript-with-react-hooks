@@ -8,6 +8,7 @@ To create a starter template,
 npm i -g create-react-app
 create-react-app your-project-name --typescript
 cd your-project-name
+yarn install
 yarn install react@next react-dom@next
 ```
 
