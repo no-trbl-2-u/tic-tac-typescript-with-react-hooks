@@ -1,0 +1,27 @@
+.Board {
+  width: 600px;
+  height: 600px;
+  
+  display:flex;  
+  flex-wrap:wrap;
+}
+
+.Cell {
+  border: 1px solid black;
+  border-radius: 80%;
+
+  /* text-align: center; */
+  background: lightpink;
+
+  display: flex;
+  flex-basis:33%;
+  justify-content: center;
+
+  box-shadow: 3px #000;
+}
+
+.value {
+  margin: auto;
+  font-size: 100px;
+  color: white;
+}

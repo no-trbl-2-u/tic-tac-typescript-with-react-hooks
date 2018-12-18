@@ -1,15 +1,32 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 
 interface CellProps {
   key: Number;
-  isTaken: Number;
+  isTaken: Boolean;
+  currentPlayer: String;
 }
 
 const Cell: React.FC<CellProps> = (props) => {
-  const { key, isTaken } = props
+  const { isTaken, currentPlayer } = props
+
+  useEffect( () => {
+    const cells = document.querySelectorAll('.Cell');
+    cells.forEach(cell => {
+      cell.addEventListener('click', event => {
+        console.log(event.target)
+      })
+    });
+  });
+
   return(
-    <div className="cell">
-      <h1>{key}</h1>
+    <div className="Cell">
+      {(isTaken) ? 
+          <span className="value">
+            { currentPlayer }
+          </span>
+
+          : null
+      }
     </div>
   );
 };
