@@ -23,6 +23,7 @@ const App = () => {
   return (
     // Container for the App
     <section className="App">
+      <h1 className="App-header">Tic-Tac-Typescript</h1>
       <Board 
         board={ board }
         currentPlayer={ currentPlayer }

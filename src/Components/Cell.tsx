@@ -4,22 +4,18 @@ interface CellProps {
   key: Number;
   isTaken: Boolean;
   currentPlayer: String;
+  // currentValue: String;
 }
 
 const Cell: React.FC<CellProps> = (props) => {
   const { isTaken, currentPlayer } = props
 
-  useEffect( () => {
-    const cells = document.querySelectorAll('.Cell');
-    cells.forEach(cell => {
-      cell.addEventListener('click', event => {
-        console.log(event.target)
-      })
-    });
-  });
+  const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
+    console.log('checked')
+  }
 
   return(
-    <div className="Cell">
+    <div className="Cell" onClick={ event => clickHandler(event) }>
       {(isTaken) ? 
           <span className="value">
             { currentPlayer }
