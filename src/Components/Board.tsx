@@ -20,16 +20,16 @@ const Board: React.FC<BoardProps> = (props) => {
       setPlayer("X") ;
   }
 
+  
   const setNewBoard = 
     (board: number[], boardIndex: number) => {
       const newCell = currentPlayer === "X" ? 1 : -1
       const newBoardState = [...board]
-        .map( (cell: any, index: number) => {
-          index === boardIndex ? cell = newCell : cell
+        .map(function updateCell(cell: number, index: number): number{
+          return index === boardIndex ? cell = newCell : cell
         })
       
-      console.log(newBoardState)
-      // setBoard(newBoardState)
+      setBoard(newBoardState)
   }
 
   return (

@@ -20,13 +20,12 @@ const Cell: React.FC<CellProps> = (props) => {
     setNewBoard
   } = props
 
-  const handleClick = (event: React.MouseEvent) => {
-    const cellIndex = event.target
-    // console.log(cellIndex)
+  const handleClick = (event: any) => {
+    const cellIndex = event.target.dataset.key
+    console.log(cellIndex)
     
     togglePlayer();
-    
-    setNewBoard(currentBoard, 5);
+    setNewBoard(currentBoard, Number(cellIndex));
     
   }
 
