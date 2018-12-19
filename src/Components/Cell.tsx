@@ -1,27 +1,47 @@
 import React, { useEffect } from 'react';
 
 interface CellProps {
-  key: Number;
-  isTaken: Boolean;
+  key: number;
+  index: number;
+  currentCellValue: number;
   currentPlayer: String;
-  // currentValue: String;
+  currentBoard: number[];
+  setNewBoard: any;
+  togglePlayer: any;
 }
 
 const Cell: React.FC<CellProps> = (props) => {
-  const { isTaken, currentPlayer } = props
+  const {
+    index,
+    currentCellValue,
+    currentBoard,
+    currentPlayer, 
+    togglePlayer,
+    setNewBoard
+  } = props
 
-  const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
-    console.log('checked')
+  const handleClick = (event: React.MouseEvent) => {
+    const cellIndex = event.target
+    // console.log(cellIndex)
+    
+    togglePlayer();
+    
+    setNewBoard(currentBoard, 5);
+    
   }
 
   return(
-    <div className="Cell" onClick={ event => clickHandler(event) }>
-      {(isTaken) ? 
-          <span className="value">
-            { currentPlayer }
-          </span>
+    <div 
+      className="Cell"
+      data-key= { index }
+      onClick={ (event) => handleClick(event) }>
 
-          : null
+      {
+        (currentCellValue === 0) ?
+          <span className="value"></span> :
+            (currentCellValue === -1) ?
+              <span className="value">O</span> :
+              <span className="value">X</span>
       }
     </div>
   );

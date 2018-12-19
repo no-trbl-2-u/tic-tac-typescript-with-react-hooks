@@ -3,22 +3,47 @@ import Cell from './Cell';
 
 
 interface BoardProps {
-  board: boolean[];
+  board: number[];
   currentPlayer: string;
+  setPlayer: any;
+  setBoard: any;
 }
 
-// Board :: [Number] -> JSX
+// Board :: [Boolean] -> JSX
 const Board: React.FC<BoardProps> = (props) => {
-  const { board, currentPlayer } = props
+  const { board, setBoard, currentPlayer, setPlayer } = props
   
+  // togglePlayer :: String State -> String State Change
+  const togglePlayer = () => {
+    currentPlayer === "X" ?
+      setPlayer("O") :
+      setPlayer("X") ;
+  }
+
+  const setNewBoard = 
+    (board: number[], boardIndex: number) => {
+      const newCell = currentPlayer === "X" ? 1 : -1
+      const newBoardState = [...board]
+        .map( (cell: any, index: number) => {
+          index === boardIndex ? cell = newCell : cell
+        })
+      
+      console.log(newBoardState)
+      // setBoard(newBoardState)
+  }
+
   return (
     <div className="Board">
       {board.map(
         (ea, index) => (
           <Cell
             key={ index }
-            isTaken={ea}
+            index= { index }
+            currentCellValue={ ea }
             currentPlayer={ currentPlayer }
+            currentBoard={ board }
+            setNewBoard={ setNewBoard }
+            togglePlayer={ togglePlayer }
           />
         )
       )}

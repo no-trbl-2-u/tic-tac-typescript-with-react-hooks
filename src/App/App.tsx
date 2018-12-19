@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Board from '../Components/Board';
 import './App.css';
 
 const App = () => {
 
   const [board, setBoard] = useState(
-    [false, false, false,
-    false, false, false,
-    false, false, false]
+    [0, 0, 0, 0, 0, 0, 0, 0, 0]
   );
 
   // setPlayer :: String -> String State
@@ -20,6 +18,12 @@ const App = () => {
         setPlayer("Y") : setPlayer("X")
   }
 
+  useEffect(
+    function logPlayer () {
+      console.log(`logPlayer -> ${currentPlayer}`)
+    }
+  )
+
   return (
     // Container for the App
     <section className="App">
@@ -27,6 +31,8 @@ const App = () => {
       <Board 
         board={ board }
         currentPlayer={ currentPlayer }
+        setPlayer= { setPlayer }
+        setBoard= { setBoard }
       />
     </section>
   )
