@@ -21,29 +21,39 @@ const Board: React.FC<BoardProps> = (props) => {
   }
 
   
-  const setNewBoard = 
-    (board: number[], boardIndex: number) => {
+  function setNewBoard
+    (board: number[], boardIndex: number){
       const newCell = currentPlayer === "X" ? 1 : -1
       const newBoardState = [...board]
-        .map(function updateCell(cell: number, index: number): number{
-          return index === boardIndex ? cell = newCell : cell
-        })
-      
-      setBoard(newBoardState)
+        .map(
+          function updateCell(cell: number, index: number)
+          : number{ 
+              return index === boardIndex 
+                ? cell = newCell
+                : cell
+          }
+        )
+      console.log("Value of the new Cell -> " + newCell)
+      setBoard(newBoardState);
   }
 
   return (
     <div className="Board">
       {board.map(
-        (ea, index) => (
+        (cell, index) => (
           <Cell
             key={ index }
-            index= { index }
-            currentCellValue={ ea }
+            index={ index }
+            currentCellValue={ cell }
             currentPlayer={ currentPlayer }
             currentBoard={ board }
             setNewBoard={ setNewBoard }
             togglePlayer={ togglePlayer }
+            isTaken={
+              cell === 0
+                ? false
+                : true
+            }
           />
         )
       )}

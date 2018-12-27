@@ -4,6 +4,7 @@ import './App.css';
 
 const App = () => {
 
+  // setBoard :: [Int] -> [Int] State
   const [board, setBoard] = useState(
     [0, 0, 0, 0, 0, 0, 0, 0, 0]
   );
@@ -19,9 +20,12 @@ const App = () => {
   }
 
   useEffect(
-    function logPlayer () {
-      console.log(`logPlayer -> ${currentPlayer}`)
+    function logGame () : void {
+      console.log(`==============================`)
+      console.log(`logPlayer -> ${currentPlayer}`);
+      console.log(`board -> ${board}`)
     }
+
   )
 
   return (
@@ -34,6 +38,7 @@ const App = () => {
         setPlayer= { setPlayer }
         setBoard= { setBoard }
       />
+      <h3>Current Player: { currentPlayer }</h3>
     </section>
   )
 }
