@@ -25,7 +25,6 @@ const App = () => {
       console.log(`logPlayer -> ${currentPlayer}`);
       console.log(`board -> ${board}`)
     }
-
   )
 
   return (
@@ -35,8 +34,8 @@ const App = () => {
       <Board 
         board={ board }
         currentPlayer={ currentPlayer }
-        setPlayer= { setPlayer }
-        setBoard= { setBoard }
+        setPlayer={ setPlayer }
+        setBoard={ setBoard }
       />
       <h3>Current Player: { currentPlayer }</h3>
     </section>
